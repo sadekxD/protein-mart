@@ -1,0 +1,255 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,900&display=swap");
+@import "./variables";
+@import "./mediaqueries";
+@import "./mixins";
+@import "./navbar";
+@import "./card";
+@import "./cart";
+@import "./checkout";
+@import "./signin";
+@import "./register";
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul {
+	list-style: none;
+}
+
+input,
+select,
+button {
+	border: none;
+	outline: none;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+button {
+	cursor: pointer;
+}
+
+.btn-submit {
+	padding: 0.5rem 1rem;
+	width: 100%;
+	background-color: blueviolet;
+	font-size: 1rem;
+	color: #fff;
+	border-radius: 0.3rem;
+	margin-top: 1rem;
+}
+
+.overlay {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.1);
+	min-height: 100vh;
+	max-height: 100vh;
+	min-width: 100vw;
+	max-width: 100vw;
+	z-index: 99;
+}
+
+.container {
+	// display: flex;
+	// align-items: center;
+	// justify-content: center;
+	min-height: 100vh;
+	padding: 1.2rem 2rem;
+
+	.title {
+		font-size: 1.4rem;
+		font-weight: 500;
+		user-select: none;
+	}
+
+	.product-row {
+		margin-top: 2rem;
+		display: grid;
+		width: 100%;
+		gap: 40px;
+		grid-template-rows: auto;
+		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+
+		// @include media("<=LGdesktop") {
+		// 	grid-template-columns: repeat(4, 1fr);
+		// }
+
+		// @include media("<=desktop") {
+		// 	grid-template-columns: repeat(3, 1fr);
+		// }
+
+		// @include media("<=tablet") {
+		// 	grid-template-columns: repeat(2, 1fr);
+		// }
+
+		@include media("<=phone") {
+			grid-template-columns: 1fr;
+		}
+
+		.card {
+			width: 100%;
+			min-height: 400px;
+			background-color: #fff;
+			@include flexCenter(column);
+			justify-content: space-between;
+			padding: 1rem;
+			border-radius: 8px;
+			cursor: pointer;
+			box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
+
+			.header {
+				font-weight: lighter;
+			}
+
+			img {
+				max-height: 240px;
+			}
+
+			.product-info {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				width: 100%;
+
+				.product-title {
+					font-weight: 500;
+					font-size: 1rem;
+				}
+
+				.price {
+					margin-left: 8px;
+				}
+			}
+		}
+	}
+}
+
+.details-row {
+	display: grid;
+	grid-template-rows: auto;
+	grid-template-columns: repeat(2, 1fr);
+	width: 100%;
+	height: 100vh;
+
+	.col {
+		width: 100%;
+
+		&:nth-child(1) {
+			background-color: #fff;
+			@include flexCenter(row);
+			position: relative;
+
+			img {
+				height: 320px;
+			}
+		}
+
+		&:nth-child(2) {
+			background-color: $bgColor;
+			@include flexCenter(row);
+
+			.info-wrap {
+				padding: 1rem;
+				max-width: 500px;
+
+				.link {
+					margin-bottom: 3rem;
+				}
+
+				.product-info {
+					.header {
+						font-size: 1rem;
+						font-weight: 300;
+						font-weight: lighter;
+						margin-bottom: 1rem;
+					}
+
+					.product-title {
+						font-size: 1.2rem;
+						margin-top: 1.3rem;
+						font-weight: 500;
+					}
+
+					.product-desc {
+						font-size: 1rem;
+						margin-top: 1.2rem;
+					}
+
+					.additionals {
+						font-size: 14px;
+						margin-top: 1.2rem;
+					}
+
+					.product-action {
+						@include flexCenter(row);
+						justify-content: space-between;
+						margin: 1.2rem 0;
+
+						.qyt-wrap {
+							@include flexCenter(row);
+							.inc,
+							.dec {
+								height: 36px;
+								width: 36px;
+								@include flexCenter(row);
+								border-radius: 50%;
+								font-size: 1rem;
+								background-color: rgb(189, 155, 155);
+								cursor: pointer;
+								user-select: none;
+							}
+
+							.quantity {
+								font-size: 1rem;
+								margin: 0 1rem;
+							}
+						}
+					}
+
+					.add-to-cart {
+						padding: 0.4rem 1rem;
+						background-color: rgb(136, 49, 223);
+						border: none;
+						color: #fff;
+						font-family: "poppins";
+						font-size: 0.9rem;
+						border-radius: 0.4rem;
+						cursor: pointer;
+
+						&:focus {
+							outline: none;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: 800px) {
+		grid-template-columns: 1fr;
+
+		.col {
+			&:nth-child(1) {
+				margin: 2rem 0;
+			}
+		}
+	}
+}

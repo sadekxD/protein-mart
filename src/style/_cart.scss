@@ -1,0 +1,137 @@
+.cart-btn {
+	@include flexCenter(column);
+	position: fixed;
+	top: 80%;
+	right: 0;
+	padding: 1rem;
+	width: fit-content;
+	background-color: rgb(247, 195, 195);
+	z-index: 100;
+
+	.cary-icon {
+		font-size: 1.2rem;
+		svg {
+			vertical-align: middle;
+		}
+	}
+
+	.price-total {
+		font-size: 1.2rem;
+	}
+}
+
+.cart-sidebar {
+	position: fixed;
+	width: 500px;
+	min-width: 300px;
+	height: 100vh;
+	min-height: 100vh;
+	max-height: 100vh;
+	background: #fff;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 101;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+
+	@media screen and (max-width: 600px) {
+		width: 300px;
+	}
+
+	.cart-header {
+		height: 50px;
+		min-height: 50px;
+		width: 100%;
+		padding: 0 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+
+		span {
+			margin-left: 1rem;
+		}
+	}
+
+	.cart-items {
+		width: 100%;
+		overflow: auto;
+		flex-grow: 1;
+
+		ul {
+			.item {
+				display: flex;
+				justify-content: space-between;
+				margin-bottom: 1rem;
+				padding: 0 0.5rem;
+
+				.info {
+					flex-grow: 1;
+					display: grid;
+					grid-template-areas: "i t" "i q";
+					grid-template-columns: 60px 1fr;
+					grid-template-rows: auto;
+
+					img {
+						grid-area: i;
+						width: 60px;
+						height: 60px;
+						margin: auto 0;
+					}
+					.title {
+						grid-area: t;
+						font-size: 0.9rem;
+						font-weight: 500;
+						margin-left: 0.5rem;
+
+						display: flex;
+						align-items: center;
+						justify-content: space-between;
+
+						.total {
+							margin: 0 1rem;
+							font-size: 1.1rem;
+						}
+					}
+					.qyt-wrap {
+						display: flex;
+						align-items: center;
+						margin-top: 0.5rem;
+						margin-left: 0.5rem;
+
+						.inc,
+						.dec {
+							width: 36px;
+							height: 36px;
+							border-radius: 50%;
+							background-color: honeydew;
+							@include flexCenter(row);
+							cursor: pointer;
+						}
+						.quantity {
+							padding: 0 1rem;
+							@include flexCenter(row);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.cart-checkout {
+		height: 60px;
+		min-height: 60px;
+		width: 100%;
+		border: none;
+		background-color: rgb(0, 0, 0);
+		color: #fff;
+		font-size: 1.2rem;
+		margin: 0 1rem;
+
+		&:focus {
+			outline: none;
+		}
+	}
+}
